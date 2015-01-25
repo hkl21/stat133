@@ -1,0 +1,5 @@
+name = "Kin Wai Wong"
+SID = "24985443"
+email = "janwong@berkeley.edu"
+github_name = "wongjan"
+status = "enrolled"
