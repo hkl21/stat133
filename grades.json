@@ -1,0 +1,23 @@
+{
+    "email": "hkl21@berkeley.edu", 
+    "github_name": "hkl21", 
+    "grades": {
+        "hw1": {
+            "note": "", 
+            "hash": "ed4c31418cc3dc17c4931584c9517d6ac47bbfc9", 
+            "earned": 20, 
+            "possible": 20, 
+            "penalty": 0, 
+            "parts": {
+                "hw1": {
+                    "possible": 20, 
+                    "earned": 20
+                }
+            }
+        }
+    }, 
+    "login": "hkl21", 
+    "name": "Hyeonguk Lee", 
+    "status": "enrolled", 
+    "url": "git@github.com:hkl21/stat133.git"
+}
