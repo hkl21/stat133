@@ -19,5 +19,6 @@
     "login": "hkl21", 
     "name": "Hyeonguk Lee", 
     "status": "enrolled", 
-    "url": "git@github.com:hkl21/stat133.git"
+    "url": "git@github.com:hkl21/stat133.git", 
+    "section": "lab4"
 }
