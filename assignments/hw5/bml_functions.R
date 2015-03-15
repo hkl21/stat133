@@ -28,63 +28,70 @@ bml.init <- function(r, c, p){
 ## NOTE : the function should move the red cars once and the blue cars once,
 ## you can write extra functions that do just a step north or just a step east.
 
-red <- function(row){
-  ones<-rev(which(row==1))
-  zeros<-which(row==0)
-  for(i in ones){
-    if(length(row) %in% ones & row[1] == 0){
-      row[1]<-1
-      row[length(row)]<-0
-    }
-    if(!(i+1) %in% zeros){
-      next
-    }
-    if(i+1 %in% zeros){
-      row[i+1]<-row[i]
-      row[i]<-0
-    }
+red.gnext <- function(i, j, m) {
+  if (j == ncol(m)) {
+    return(m[i, 1])
+  } else {
+    return(m[i, j+1])
   }
-  return(row)
 }
 
-
-blue <- function(row){
-  twos<-which(row==2)
-  zeros<-which(row==0)
-  for(i in twos){
-    if(1 %in% twos & row[length(row)] == 0){
-      row[length(row)] <- 2
-      row[1] <- 0
-    }
-    if(!(i-1) %in% zeros){
-      next 
-    }
-    if(i-1 %in% zeros){
-      row[i-1] <- row[i]
-      row[i] <- 0
-    }
+blue.gnext <- function(i, j, m) {
+  if (i == 1) {
+    return(m[nrow(m), j])
+  } else {
+    return(m[i-1, j])
   }
-  return(row)
 }
+
+red.set <- function(i, j, m) {
+  if (j == ncol(m)) {
+    m[i, 1] = 1
+    m[i, j] = 0
+  } else {
+    m[i, j+1] = 1
+    m[i, j] = 0
+  }
+  return(m)
+}
+
+blue.set <- function(i, j, m) {
+  if (i == 1) {
+    m[nrow(m), j] = 2
+    m[i, j] = 0
+  } else {
+    m[i-1, j] = 2
+    m[i, j] = 0
+  }
+  return(m)
+}
+
 
 bml.step <- function(m){
-  grid.new<-T
-  if(nrow(m) == 1){
-    new.m<-red(m)
-  }
-  else{
-    move.reds<-matrix(apply(m, 1, red), ncol=ncol(m), byrow=T)
-    new.m<-apply(t(move.reds), 1, blue)
-    image(t(apply(new.m,2,rev)), col=c('white','red','blue'), ask =T, axes=F)
-  }
-  
-  for(i in (new.m==m)){
-    if(i==F){
-      grid.new<-F
+  n1 = m
+  n2 = m
+  for (i in 1:nrow(n1)) {
+    for (j in 1:ncol(n1)) {
+      if ((n1[i,j] == 1) & (red.gnext(i,j,n1) == 0)) {
+        n2 = red.set(i,j,n2)
+      }
     }
   }
-  return(list(new.m, grid.new))
+  n1 = n2
+  for (i in 1:nrow(n1)) {
+    for (j in 1:ncol(n1)) {
+      if ((n1[i,j] == 2) & (blue.gnext(i,j,n1) == 0)) {
+        n2 = blue.set(i,j,n2)
+      }
+    }
+  }
+  grid.new = any(n2 != m)
+  m = n2
+  return(list(m, grid.new))
 }
+
+
+
 
 
 
