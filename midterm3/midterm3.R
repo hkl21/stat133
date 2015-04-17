@@ -9,6 +9,12 @@
 #   <num.dollar>: an integer indicating how many elements of <chvec> contain the "$"
 #     symbol. For example: numDollarElements(c('dollar', 'd$llar', '$$$')) should return 2
 
+numDollarElements <- function(chvec){
+  dollar <- grep("\\$", chvec)
+  num.dollar <- length(dollar)
+  return(num.dollar)
+}
+
 
 
 # Write a function called prodDigits that compute the product of all (single) digits in
@@ -18,6 +24,15 @@
 #
 # and return the following
 #   <total>: A single number (the product of all digits in chvec)
+prodDigits <- function(chvec){
+  digit <- gsub("[^[[:digit:]]","",chvec)
+  split <- unlist(strsplit(digit,""))
+  total <- prod(as.numeric(split))
+  return(total)
+}
+
+
+
 
 
 
@@ -34,6 +49,15 @@
 #
 # and return
 #   <herchvec>: The same character vector with the required substitutions.
+
+hisToher <- function(chvec){
+    str <- tolower(chvec)
+    he <- gsub("\\<(he)\\>","she",str)
+    his <- gsub("\\<(his)\\>","her",he)
+    him <- gsub("\\<(him)\\>","her",his)
+    
+    return(him)
+    }
 
 
 # A test case
@@ -55,4 +79,13 @@ all.equal(
 #  <letter> The most common letter or letters in the string.
 # For example mostCommonLetter("aabbccccdddd") should return 
 # [1] "c" "d"
+
+mostCommonLetter <- function(chvec){
+  str <- tolower(chvec)
+  letter <- gsub("[^[[:alpha:]]","",str)
+  split <- unlist(strsplit(letter,""))
+  mat <- as.matrix(table(split))
+  max <- which(mat[,1]==max(mat[,1]))
+  return(names(max))
+}
 
