@@ -168,7 +168,7 @@ bdiff <- mean(over35$bwt,na.rm=T)-mean(under35$bwt,na.rm=T)
 # [2 pts]
 #Make a box plot of [mpg] by [cyl] (so 3 boxplots in one plot)
 
-boxplot(mtcars$mpg~mtcars$cyl)
+boxplot(mtcars$mpg~mtcars$cyl) # Andy
 
 
 # [3 pts]
@@ -177,8 +177,8 @@ boxplot(mtcars$mpg~mtcars$cyl)
 # Hint: the regression coefficients are stored in [coef] in the lm object and you can use [abline()] to
 # add a line to a plot
 reg <- lm(qsec~hp,data=mtcars)
-plot(mtcars$hp,mtcars$qsec)
-abline(reg)
+plot(mtcars$hp,mtcars$qsec) # Andy
+abline(reg) #Andy
 
 
 # [3 pt]
@@ -215,15 +215,16 @@ abline(v=2.1)
 # Please redo the plot, but this time put two plots side by side (hint: before plotting set par(mfrow=...) )
 # The left plot should include only data from 1960, the right one only from 2014.
 par<-par(mfrow=c(1960,2013))
-plot(WorldBank$fertility.rate[par[[1]]],WorldBank$life.expectancy[par[[1]]],pch=".",col=as.numeric(WorldBank$region)
-     ,xlab="fertility [fertility.rate]",ylab="life expectancy [life.expectancy]")
-
+#plot(WorldBank$fertility.rate[par[[1]]],WorldBank$life.expectancy[par[[1]]],pch=".",col=as.numeric(WorldBank$region)
+#     ,xlab="fertility [fertility.rate]",ylab="life expectancy [life.expectancy]")
+# Andy
 
 
 # [4 pts]
 # Make a histogram of GDP only for observations where the lending rating is "IDA"
 # The width of the bars should be approximately 250 (use breaks to set how many bars)
 # Add an x-axis label and a title.
+dev.off()#Andy
 hist(WorldBank$GDP[WorldBank$lending=="IDA"],breaks=250,
      xlab="GDP.per.capita",main="GDP where the lending rating is IDA")
 
@@ -249,7 +250,7 @@ max.rain <- sapply(rain,max)
 # and the function [abs()] for absolute value
 
 
-max.diff.rain <- <your code here>
+#max.diff.rain <- <your code here>
 
 
 # [5 pts]
@@ -367,7 +368,7 @@ set.seed(123456)
 #    generate a ticket for each player in turn, if they had the winning numbers 
 #    increase the counter by 1
 
-function <- NumJackpot(k, B){
+NumJackpot <- function(k, B){
   rule <- sample(rep(1:19,4,replace=F),3)
 
 }
