@@ -327,7 +327,7 @@ library("RColorBrewer")
 # display.brewer.all( your code here )
 # brewer.pal( your code here )
 display.brewer.all(type="div")
-brewer.pal(11,"BrBg")
+#brewer.pal(11,"BrBg")
 
 
 # myGold <- your selected color
