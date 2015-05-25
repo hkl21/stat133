@@ -1,5 +1,4 @@
 #################################################################
-# Statistics 133, Lecture 2, Spring 2015
 # Final Exam, Monday May 11th, 11:30 am - 14:30 pm
 
 # Please read all instructions carefully.
@@ -60,7 +59,7 @@ x <- seq(3,1200,by=3)
 # y[[1]] is 1, 2, 3, ..., 1000
 # y[[2]] is 2, 4, 6, ..., 1000
 # y[[3]] is 3, 6, 9, ..., 999
-y <- 
+#y <- 
 
 
 # [1 pt]
@@ -125,7 +124,7 @@ cw3 <- mean(ChickWeight[ChickWeight$Time ==0,1])
 
 # [1 pt]
 # Create [cw4] a random subset of 200 ChickWeight observations (any 200)
-cw4 
+#cw4 
 
   
 # for the next two tasks you will use the data frame infants (size 1236x15)
@@ -214,19 +213,22 @@ abline(v=2.1)
 # Do you see patterns in the plot?  You just plotted these variables for all years between 1960 and 2014.
 # Please redo the plot, but this time put two plots side by side (hint: before plotting set par(mfrow=...) )
 # The left plot should include only data from 1960, the right one only from 2014.
-par<-par(mfrow=c(1960,2013))
-#plot(WorldBank$fertility.rate[par[[1]]],WorldBank$life.expectancy[par[[1]]],pch=".",col=as.numeric(WorldBank$region)
-#     ,xlab="fertility [fertility.rate]",ylab="life expectancy [life.expectancy]")
-# Andy
+# inga commented out
+# par<-par(mfrow=c(1960,2013))
+par(mfrow=c(1,2))
 
+# inga: subsetting doesn't work, with either version of par, causes an error when run
+# plot(WorldBank$fertility.rate[par[[1]]],WorldBank$life.expectancy[par[[1]]],pch=".",col=as.numeric(WorldBank$region),
+#     xlab="fertility [fertility.rate]",ylab="life expectancy [life.expectancy]") # Andy
 
 # [4 pts]
 # Make a histogram of GDP only for observations where the lending rating is "IDA"
 # The width of the bars should be approximately 250 (use breaks to set how many bars)
 # Add an x-axis label and a title.
-dev.off()#Andy
+#dev.off()#Andy
 hist(WorldBank$GDP[WorldBank$lending=="IDA"],breaks=250,
      xlab="GDP.per.capita",main="GDP where the lending rating is IDA")
+
 
 #################################################################
 ##### PART III : apply statements [15 pts]
@@ -264,7 +266,7 @@ prop.rain <- sapply(rain, function(x) x/365)
 # Make a plot with 6 panels and plot the histogram of the rainfall for each weather station
 # in a separate panel (there will be one empty panel)
 # use an apply statment to the the plotting
-par(mfrow=c(2,3))
+##par(mfrow=c(2,3))
 
 
 #################################################################
